@@ -112,13 +112,10 @@ public class RobotContainer {
     new JoystickButton(driveController, XboxController.Button.kRightBumper.value)
       .whenPressed(drivetrain::toggleDriveGear);
 
-  
-
       /*
       Add commands for centering, turn to heading, etc.
       
       */
-
 
   }
   /**
