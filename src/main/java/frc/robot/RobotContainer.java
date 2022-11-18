@@ -38,16 +38,12 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 public class RobotContainer {
 
-  //See NYC branch for full container with commands, groups, multiple systems, etc.,
-
   //Subsystems:
   private final DrivetrainSubsystem drivetrain = new DrivetrainSubsystem();
-
 
   //Commands:
 
   //Command groups:
- 
 
   /** Example RAMSETE command now found in {@link AutoTrajectories} */
   private RamseteCommand ramseteCommand = new RamseteCommand(
@@ -69,16 +65,12 @@ public class RobotContainer {
     drivetrain
   );
 
-
   //Controllers:
   // private final XboxController xboxController = new XboxController(0);
   private final XboxController driveController  = new XboxController(0);
 
   //Choosers: 
   private SendableChooser<Command> autoChooser = new SendableChooser<>();
-
-
-  
 
   public RobotContainer() {
     
