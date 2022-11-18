@@ -23,7 +23,10 @@ import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.ADIS16470_IMU;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.DemandType;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.*;
 
@@ -80,15 +83,17 @@ public class DrivetrainSubsystem extends SubsystemBase {
     leftS.setNeutralMode(NeutralMode.Coast); 
     rightS.setNeutralMode(NeutralMode.Coast); 
 
-    //Motors Invert
-    rightM.setInverted(true);
-    rightS.setInverted(true);
-
-    m_drive = new DifferentialDrive(leftM, rightM);
-
     //Slave follows Master
     leftS.follow(leftM); 
     rightS.follow(rightM); 
+
+    //Motors Invert
+    rightM.setInverted(true);
+    rightS.setInverted(InvertType.FollowMaster); //check for error
+
+
+    m_drive = new DifferentialDrive(leftM, rightM);
+
 
     //Motors default sensor - Integrated
     leftM.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor); 
@@ -125,7 +130,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
     
     //toggle true/false to get rid of smartDashboard INFO
     //DashboardSettings.isInInfoMode(this)
-    if(true){
+    if(false){
     
       SmartDashboard.putNumber("Encoder Left: ", getLeftEncoderCount());
       SmartDashboard.putNumber("Encoder Right", getRightEncoderCount());
@@ -253,6 +258,21 @@ public class DrivetrainSubsystem extends SubsystemBase {
     rightM.setVoltage(rightVolts);
     m_drive.feed();
   }
+
+
+
+
+
+  // SimpleMotorFeedforward feedforward = new SimpleMotorFeedforward(Constants.Swerve.driveKS, Constants.Swerve.driveKV, Constants.Swerve.driveKA);
+
+  // public void driveAssist(){
+  //   leftM.set(ControlMode.Velocity,100,DemandType.ArbitraryFeedForward,feedforward.calculate(desiredState.speedMetersPerSecond))
+  // }
+
+
+
+
+  
 
   /**
    * Sets the max output of the drive. Useful for scaling the drive to drive more slowly.
