@@ -155,6 +155,13 @@ public class DrivetrainSubsystem extends SubsystemBase {
       ///////////////////////////////////////////////////////////
     }
 
+    if(false){
+
+      SmartDashboard.putNumber("test Volts", .1);
+      leftM.setVoltage(SmartDashboard.getNumber("test Volts", .1));
+
+    }
+
 
     // Update the odometry in the periodic block 
     m_odometry.update( 
