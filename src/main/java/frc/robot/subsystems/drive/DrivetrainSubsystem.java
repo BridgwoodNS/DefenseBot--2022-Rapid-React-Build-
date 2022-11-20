@@ -36,7 +36,9 @@ import com.ctre.phoenix.motorcontrol.can.*;
 public class DrivetrainSubsystem extends SubsystemBase {
 
   //Gear Ratio
- public static final double kGearRatio = 15; //Gear ratio needed - must switch robot to correct gear
+  //6.25 for High
+  //12.86 for Low
+ public static final double kGearRatio = 6.25; //Gear ratio needed - must switch robot to correct gear
  
   //Left Motors
   protected static final WPI_TalonFX leftM = new WPI_TalonFX(Constants.leftM);
@@ -114,10 +116,11 @@ public class DrivetrainSubsystem extends SubsystemBase {
     m_odometry = new DifferentialDriveOdometry(Rotation2d.fromDegrees(gyro.getAngle())); //That was a nightmare to figure out :/ 
 
     ///////////////////////////////////////////////////////////////////////////////////////
-    //Sets the gear to - low/high?????
+    // double check starts in high gear
 
     //high is forward
     shifter.set(Value.kForward); 
+    
 
     resetHeadingEncoder();
 
@@ -160,7 +163,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
       Odometry.nativeUnitsToDistanceMeters(getRightEncoderCount())
     );  //encoder count needs to be in meters 
 
-
+    SmartDashboard.putString("Drive gear", shifter.get().toString());
 
   }
 
