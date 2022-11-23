@@ -22,6 +22,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.setVoltage;
 import frc.robot.commands.teleop.*;
 import frc.robot.misc.DashboardSettings;
 import frc.robot.misc.Constants.AutoConstants;
@@ -38,11 +39,12 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 public class RobotContainer {
 
+
   //Subsystems:
   private final DrivetrainSubsystem drivetrain = new DrivetrainSubsystem();
 
   //Commands:
-
+  private final setVoltage setVoltageCommand = new setVoltage(drivetrain);
   //Command groups:
 
   /** Example RAMSETE command now found in {@link AutoTrajectories} */
@@ -73,6 +75,7 @@ public class RobotContainer {
   private SendableChooser<Command> autoChooser = new SendableChooser<>();
 
   public RobotContainer() {
+    SmartDashboard.putData(setVoltageCommand);
     
     configureButtonBindings();
     

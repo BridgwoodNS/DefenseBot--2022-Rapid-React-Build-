@@ -39,6 +39,8 @@ public class DrivetrainSubsystem extends SubsystemBase {
   //6.25 for High
   //12.86 for Low
  public static final double kGearRatio = 6.25; //Gear ratio needed - must switch robot to correct gear
+
+ //Also assume a 3m/s velocity?
  
   //Left Motors
   protected static final WPI_TalonFX leftM = new WPI_TalonFX(Constants.leftM);
