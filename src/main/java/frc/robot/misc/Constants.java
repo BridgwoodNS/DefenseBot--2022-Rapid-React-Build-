@@ -90,6 +90,9 @@ public final class Constants {
         public static double kTurnP = 0.01;
         public static double kTurnI = 0;
         public static double kTurnD = 0;
+
+        public static double kMaxTurnRateDegPerS = 100;
+        public static double kMaxTurnAccelerationDegPerSSquared = 300;
     }
 
     public static final class AutoConstants {

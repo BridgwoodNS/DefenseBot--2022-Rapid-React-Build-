@@ -22,7 +22,9 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.TurnToAngleProfiled;
 import frc.robot.commands.setVoltage;
+import frc.robot.commands.turnDegrees;
 import frc.robot.commands.teleop.*;
 import frc.robot.misc.DashboardSettings;
 import frc.robot.misc.Constants.AutoConstants;
@@ -75,7 +77,13 @@ public class RobotContainer {
   private SendableChooser<Command> autoChooser = new SendableChooser<>();
 
   public RobotContainer() {
+    SmartDashboard.putNumber("angle", 0);
+
     SmartDashboard.putData(setVoltageCommand);
+    SmartDashboard.putData(new turnDegrees(SmartDashboard.getNumber("angle", 0), drivetrain));
+    SmartDashboard.putData(new TurnToAngleProfiled(SmartDashboard.getNumber("angle", 0), drivetrain));
+    //might need to make angle
+    
     
     configureButtonBindings();
     
