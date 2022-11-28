@@ -319,6 +319,8 @@ public class DrivetrainSubsystem extends SubsystemBase {
   //Gyro - getters and resseters 
   public double getAngle(){   return gyro.getAngle(); } 
   public void resetAngle(){  gyro.reset(); } 
+  public double getHeading2() {  return Math.IEEEremainder(gyro.getAngle(), 360) * (Constants.DriveConstants.kGyroReversed ? -1.0 : 1.0);
+  }
 
   /** Zeroes the heading of the robot. */
   public void zeroHeading() {

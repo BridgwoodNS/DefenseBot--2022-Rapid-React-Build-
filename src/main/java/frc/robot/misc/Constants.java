@@ -62,6 +62,8 @@ public final class Constants {
     }
 
     public static final class DriveConstants {
+
+        public static final boolean kGyroReversed = false;
        
         public static final double kTrackwidthMeters = 0.457;
         public static final DifferentialDriveKinematics kDriveKinematics =
@@ -84,6 +86,10 @@ public final class Constants {
     
         // Example value only - as above, this must be tuned for your drive!
         public static final double kPDriveVel = 0.66725;
+
+        public static double kTurnP = 0.01;
+        public static double kTurnI = 0;
+        public static double kTurnD = 0;
     }
 
     public static final class AutoConstants {
